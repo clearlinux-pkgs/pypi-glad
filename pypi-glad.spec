@@ -4,18 +4,20 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-glad
-Version  : 0.1.36
-Release  : 1
-URL      : https://files.pythonhosted.org/packages/ba/5f/14c65b8f4be10be731844834f3377f9acbeeb8ead6363d10b2c758baca96/glad-0.1.36.tar.gz
-Source0  : https://files.pythonhosted.org/packages/ba/5f/14c65b8f4be10be731844834f3377f9acbeeb8ead6363d10b2c758baca96/glad-0.1.36.tar.gz
+Version  : 2.0.4
+Release  : 2
+URL      : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
+Source0  : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Summary  : Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
 Group    : Development/Tools
-License  : Apache-2.0 MIT
+License  : MIT
 Requires: pypi-glad-bin = %{version}-%{release}
 Requires: pypi-glad-license = %{version}-%{release}
 Requires: pypi-glad-python = %{version}-%{release}
 Requires: pypi-glad-python3 = %{version}-%{release}
+BuildRequires : buildreq-cmake
 BuildRequires : buildreq-distutils3
+BuildRequires : pypi(jinja2)
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -23,8 +25,8 @@ BuildRequires : buildreq-distutils3
 %description
 glad
 ====
-GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
-**Use the [webservice](https://glad.dav1d.de) to generate the files you need!**
+Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specifications
+for multiple languages.
 
 %package bin
 Summary: bin components for the pypi-glad package.
@@ -57,16 +59,17 @@ Summary: python3 components for the pypi-glad package.
 Group: Default
 Requires: python3-core
 Provides: pypi(glad)
+Requires: pypi(jinja2)
 
 %description python3
 python3 components for the pypi-glad package.
 
 
 %prep
-%setup -q -n glad-0.1.36
-cd %{_builddir}/glad-0.1.36
+%setup -q -n glad-2.0.4
+cd %{_builddir}/glad-2.0.4
 pushd ..
-cp -a glad-0.1.36 buildavx2
+cp -a glad-2.0.4 buildavx2
 popd
 
 %build
@@ -74,7 +77,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679497785
+export SOURCE_DATE_EPOCH=1679498322
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -99,7 +102,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-glad
-cp %{_builddir}/glad-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-glad/179b231da21a2a00584e3fbe905eaa8aeb659176 || :
+cp %{_builddir}/glad-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-glad/b4219b5ec5bd077c98bc7b3228f9d62d522e4844 || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -123,7 +126,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-glad/179b231da21a2a00584e3fbe905eaa8aeb659176
+/usr/share/package-licenses/pypi-glad/b4219b5ec5bd077c98bc7b3228f9d62d522e4844
 
 %files python
 %defattr(-,root,root,-)
