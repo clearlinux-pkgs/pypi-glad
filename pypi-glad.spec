@@ -5,7 +5,7 @@
 #
 Name     : pypi-glad
 Version  : 2.0.4
-Release  : 2
+Release  : 3
 URL      : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Source0  : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Summary  : Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
