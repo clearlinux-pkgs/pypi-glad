@@ -7,7 +7,7 @@
 #
 Name     : pypi-glad
 Version  : 2.0.4
-Release  : 4
+Release  : 5
 URL      : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Source0  : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Summary  : No detailed summary available
@@ -59,6 +59,7 @@ python components for the pypi-glad package.
 Summary: python3 components for the pypi-glad package.
 Group: Default
 Requires: python3-core
+Provides: pypi(glad)
 Requires: pypi(jinja2)
 
 %description python3
