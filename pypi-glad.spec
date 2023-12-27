@@ -7,7 +7,7 @@
 #
 Name     : pypi-glad
 Version  : 2.0.4
-Release  : 5
+Release  : 6
 URL      : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Source0  : https://github.com/Dav1dde/glad/archive/refs/tags/v2.0.4.tar.gz
 Summary  : No detailed summary available
